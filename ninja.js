@@ -409,7 +409,7 @@ const jo = {};
 				d = a[y]("span");
 			return Me(d, "btn btn-sm rounded-pill "), d[g] = l || e, d[$ + S]("data-page", e), e == r ? Me(d, "btn-primary") : (Me(d, "btn-light hover-btn-primary"), d[k + w](oe, function(e) {
 				var a;
-				e[Y](), 1 == (m = d[C + S]("data-page")) ? (a = o ? we + "/search" + c + "?max-results=" + n + "&page=" + m : we, t[O][z] = a) : (a = (m - 1) * n, Defer.js(we + "/feeds/posts/summary/" + s + "?start-index=" + a + "&alt=json&callback=jo." + ue + "_date&max-results=1"))
+				e[Y](), 1 == (m = d[C + S]("data-page")) ? (a = o ? we + "/blog" + c + "?max-results=" + n + "&page=" + m : we, t[O][z] = a) : (a = (m - 1) * n, Defer.js(we + "/feeds/posts/summary/" + s + "?start-index=" + a + "&alt=json&callback=jo." + ue + "_date&max-results=1"))
 			})), i[M](d), i
 		}
 		e[C + S]("data-pagination") != ae ? (n = e[C + S]("data-posts"), o = e[C + S]("data-label"), s = (o = i(o)) ? "-/" + o + "/" : "", c = o ? "/label/" + o : "", Defer.js(we + "/feeds/posts/summary/" + s + "?alt=json&callback=jo." + ue + "_" + j + "&max-results=1"), d = ze("max-results", ke), u = ze("page", ke), f = d || n, m = u || 1, jo[ue + "_" + j] = function(t) {
@@ -445,12 +445,13 @@ const jo = {};
 				Ue(t.pages, o) || (d = p(o, t.currentPage, ". . " + o), s[M](d)), t.currentPage != o && (o = p(t.currentPage + 1, "", '<svg aria-hidden="true" class="icon"><use xlink:href="#i-arrow-r"/></svg>'), s[M](o)), e[g] = "", Me(s, "pagination mb-0"), e[M](s), Te(e, "visually-hidden")
 			}
 		}, jo[ue + "_date"] = function(e) {
-			e = (e = (e = e.feed.entry[0]).published.$t[J](0, 19) + e.published.$t[J](23, 29))[v]("+", "%2B"), e = we + "/search" + c + "?updated-max=" + e + "&max-results=" + f + "&page=" + m, t[O][z] = e
+			e = (e = (e = e.feed.entry[0]).published.$t[J](0, 19) + e.published.$t[J](23, 29))[v]("+", "%2B"), e = we + "/blog" + c + "?updated-max=" + e + "&max-results=" + f + "&page=" + m, t[O][z] = e
 		}) : Te(e, "visually-hidden")
 	}, null, {
 		rootMargin: "200%"
 	}), it ? mt(!1) : (null !== d && d[$ + ee]("lazy", 1), a[k + w](re, mt), a[k + w](le, mt), a[k + w](ne, mt))
 
 }();
+
 
 
