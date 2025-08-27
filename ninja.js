@@ -158,7 +158,7 @@ const jo = {};
 			  // 1) Rewrite domain dulu (hanya kalau masih domain asli)
 			  src = src
 				  .replace(/^(https?:)?\/\/blogger\.googleusercontent\.com\//, location.origin + "/cdn/data/")
-				  .replace(/^(https?:)?\/\/[1-4]\.bp\.blogspot\.com\//, "https://cdn." + location.hostname.replace(/^(?!cdn\.)[^.]+\./, "") + "/cdn/data/");
+				  .replace(/^(https?:)?\/\/[1-4]\.bp\.blogspot\.com\//, location.origin + "/cdn/image/");
 
 			  // 2) Kasus khusus YouTube
 			  if (/(img\.youtube|i\.ytimg)/.test(src)) {
@@ -452,6 +452,7 @@ const jo = {};
 	}), it ? mt(!1) : (null !== d && d[$ + ee]("lazy", 1), a[k + w](re, mt), a[k + w](le, mt), a[k + w](ne, mt))
 
 }();
+
 
 
 
