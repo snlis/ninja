@@ -243,11 +243,16 @@ const jo = {};
 			p = u ? l(c) + 1 : c,
 			h = n || e[g],
 			y = h[q](",");
-		n = "", n = (1 < y[x] && h) 
-      ? "-/" + i(y[r[Z](r[F]() * y[x])]) + "/?" 
-      : (h && h !== ae && h[H]() !== "") 
-          ? "-/" + i(h.toLowerCase()) + "/?" 
-          : "?";
+		h = (h || "").replace(/[\r\n\t]+/g, " ")[H]();
+var __l = [];
+if (h) {
+    var __s = h[q](",");
+    for (var __ii = 0; __ii < __s[x]; __ii++) {
+        var __v = (__s[__ii] || "")[H]();
+        if (__v !== "") __l[P](__v)
+    }
+}
+n = __l[x] > 1 ? "-/" + i(__l[r[Z](r[F]() * __l[x])]) + "/?" : (h && h !== ae && h !== "") ? "-/" + i(h) + "/?" : "?";
 		var orderby = e.getAttribute("data-orderby") || "";
 		var orderQuery = orderby ? "orderby=" + orderby + "&sortorder=descending&" : "";
 		Defer.js(we+"/feeds/posts/summary/"+n+orderQuery+"alt=json&callback=jo."+ge+"_"+j+"_"+a+"&max-results="+p), jo[ge + "_" + j + "_" + a] = function(n) {
@@ -456,6 +461,7 @@ const jo = {};
 	}), it ? mt(!1) : (null !== d && d[$ + ee]("lazy", 1), a[k + w](re, mt), a[k + w](le, mt), a[k + w](ne, mt))
 
 }();
+
 
 
 
