@@ -9,22 +9,25 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # 1. Checkout source code
       - name: Checkout source code
         uses: actions/checkout@v4
 
-      - name: Setup Node (jika perlu build)
+      # 2. Setup Node.js (jika perlu build)
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: "npm"
 
-      # Jika project Anda pakai build step (npm/yarn/vite/webpack)
+      # 3. Install dependencies & build
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Build project
         run: npm run build
 
-      # Upload hasil build ke Cloudflare Pages
+      # 4. Deploy hasil build ke Cloudflare Pages
       - name: Deploy to Cloudflare Pages
         run: |
           npx wrangler pages deploy ./dist \
