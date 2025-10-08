@@ -224,13 +224,33 @@ const jo = {};
 			  e.setAttribute("data-src", src);
 		};
 
-	function ct(e, t) {
-		var a = new c;
-		a[G](C, e), a[Q](de, "text/html"), a[N](null), a[k + w](te, function() {
-			var e = a[X][U](/<title>(.*?)<\/title>/);
-			t[g] = e[1][v](xe + je, "")
-		})
-	}
+	async function ct(e, t) {
+    try {
+        console.log('Fetching:', e);
+        const r = await fetch(e);
+        if (!r.ok) throw new Error('Status: ' + r.status);
+        const h = await r.text();
+        console.log('Len:', h.length);
+        const x = /<title>\s*(.*?)\s*<\/title>/i;
+        const m = h[U](x);
+        if (m && m[1]) {
+            var raw = m[1][H]();
+            var sep = xe + je;
+            if (raw.indexOf(sep) !== -1) {
+                t[g] = raw[v](sep, "")
+            } else {
+                t[g] = raw
+            }
+            console.log('Title:', t[g])
+        } else {
+            console.warn('No match:', h[J](0, 200));
+            t[g] = 'Judul Default'
+        }
+    } catch (err) {
+        console.error('Err:', err);
+        t[g] = 'Error Fetch'
+    }
+}
 	jo[fe] = function(e) {
 		var a = (r[F]() + 1).toString(36)[J](7),
 			n = e[C + S]("data-label"),
@@ -461,6 +481,7 @@ n = __l[x] > 1 ? "-/" + i(__l[r[Z](r[F]() * __l[x])]) + "/?" : (h && h !== ae &&
 	}), it ? mt(!1) : (null !== d && d[$ + ee]("lazy", 1), a[k + w](re, mt), a[k + w](le, mt), a[k + w](ne, mt))
 
 }();
+
 
 
 
